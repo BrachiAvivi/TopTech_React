@@ -8,17 +8,37 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from 'axios';
+import { useState } from 'react';
+import ManagerWorkspace from './ManagerWorkspace';
 
 const theme = createTheme();
 
 export default function Manager() {
 
+  // const [isLogin, setIsLogin] = useState(true);
+  const [pass, setPassword] = useState("")
+  const [employees, setEmployees] = useState([{Name:"aaa"},{Name:"bbb"},{Name:"ccc"}])
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      password: data.get('password'),
-    });
+    axios.get(`https://localhost:44382/api/Mamager/${pass}`)
+      .then(res => {
+        console.log(res.data);
+        if (res.ok){
+          <ManagerWorkspace e={employees}/>
+          
+          // setIsLogin(true)
+          }
+        axios.get(`https://localhost:44382/api/Employee`)
+          .then(res => {
+            setEmployees(res.data)
+          }
+          )
+
+      }).catch(err => console.log(err))
+
+
   };
 
   return (
@@ -49,6 +69,7 @@ export default function Manager() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={(e) => setPassword({ ...e.target.value })}
             />
 
             <Button
@@ -56,13 +77,13 @@ export default function Manager() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              
             >
               התחברות
             </Button>
 
           </Box>
         </Box>
-
       </Container>
     </ThemeProvider>
   );

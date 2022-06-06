@@ -5,8 +5,9 @@ import Manager from './Manager';
 import Worker from './Worker';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
+import Customer from './Customer';
 import logo from "./images/logo.jpg"
-
+import EmployeeTable from './components/employeeTable';
 
 function App() {
 
@@ -20,6 +21,8 @@ function App() {
         <Route path="/worker" element={<Worker />} />
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/signUp" element={<SignUp />} />
+        <Route path="/customer" element={<Customer />} />
+        <Route path="/employee" element={<EmployeeTable />} />
 
       </Routes>
     </>

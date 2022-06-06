@@ -22,9 +22,9 @@ export default function BasicButtonGroup(props) {
     return (
         <div className={classes.root}>
             <ButtonGroup variant="text" color="primary" aria-label="text primary button group">
-                <Button onClick={() => {navigate('/manager');}} >מנהל</Button>
-                <Button onClick={() => navigate('/worker')}>כניסת עובד</Button>
-                <Button onClick={() => navigate('/signIn')}>כניסת לקוח</Button>
+                <Button onClick={() => {navigate('/manager');}}>מנהל</Button>
+                <Button onClick={() => navigate('/signIn')}>כניסת עובד</Button>
+                <Button onClick={() => navigate('/customer')}>כניסת לקוח</Button>
                 <Button onClick={() => navigate('/signUp')}>לקוח חדש</Button>
             </ButtonGroup>
         </div>
